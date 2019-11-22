@@ -5,8 +5,10 @@
   "repository": "https://github.com/blikblum/wc-fontawesome.git",
   "author": "Luiz Américo <luizamericop@gmail.com>",
   "license": "MIT",
+  "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25"
+  },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "raw-element": "^0.3.0"
   },
   "devDependencies": {
