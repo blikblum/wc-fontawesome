@@ -2,6 +2,12 @@
   "name": "wc-fontawesome",
   "version": "0.1.0",
   "main": "src/wc-fontawesome.js",
+  "keywords": [
+    "web components",
+    "fontawesome",
+    "svg",
+    "icon"
+  ],
   "repository": "https://github.com/blikblum/wc-fontawesome.git",
   "author": "Luiz Américo <luizamericop@gmail.com>",
   "license": "MIT",
