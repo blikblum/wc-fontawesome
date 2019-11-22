@@ -4,7 +4,7 @@ Web component integration with Font Awesome (v5)
 
 > Ported from [react-fontawesome](https://github.com/FortAwesome/react-fontawesome)
 
-## Installation
+### Installation
 
 Libraries
 
@@ -18,7 +18,7 @@ Icons
 yarn add @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
 ```
 
-## Usage
+### Usage
 
 ```js
 import 'wc-fontawesome'
@@ -36,11 +36,15 @@ library.add(fas)
 <fa-icon icon="spinner"></fa-icon>
 ```
 
-## Features
+Look at the [example](example/index.html) that shows FontAwesome features. 
+
+> Needs to run on a local server with Chrome (due to importmap support)
+
+### Features
 
 The following features are available as part of Font Awesome
 
-### Basic
+#### Basic
 
 [Size](https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons):
 
@@ -118,7 +122,7 @@ Your own class names:
 <fa-icon icon="spinner" className="highlight"></fa-icon>
 ```
 
-### Advanced
+#### Advanced
 
 [Power Transforms](https://fontawesome.com/how-to-use/on-the-web/styling/power-transforms):
 
@@ -148,7 +152,7 @@ Your own class names:
 </span>
 ```
 
-## Copyright
+### Copyright
 
 2019 - Luiz Américo Pereira Câmara
 
