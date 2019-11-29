@@ -67,7 +67,7 @@ export class FontAwesomeIcon extends RawElement {
       this.innerHTML = ''
     }
 
-    this.innerHTML = renderedIcon.html[0]
+    this.innerHTML = renderedIcon.html
   }
 }
 
