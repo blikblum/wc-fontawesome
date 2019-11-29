@@ -63,8 +63,9 @@ export class FontAwesomeIcon extends RawElement {
     })
 
     if (!renderedIcon) {
-      console.log('Could not find icon', iconLookup)
+      console.warn('Could not find icon', iconLookup)
       this.innerHTML = ''
+      return
     }
 
     this.innerHTML = renderedIcon.html
