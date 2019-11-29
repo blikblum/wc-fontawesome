@@ -18,6 +18,7 @@
     "raw-element": "^0.3.0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2"
   }
 }
