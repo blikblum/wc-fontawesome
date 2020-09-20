@@ -11,6 +11,10 @@
   "repository": "https://github.com/blikblum/wc-fontawesome.git",
   "author": "Luiz Américo <luizamericop@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "web-test-runner test/**/*.test.js --node-resolve",
+    "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
+  },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25"
   },
@@ -19,6 +23,8 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2"
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@open-wc/testing": "^2.5.26",
+    "@web/test-runner": "^0.7.27"
   }
 }
