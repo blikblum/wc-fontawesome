@@ -4,8 +4,11 @@ import classList from './utils/get-class-list-from-props.js'
 import normalizeIconArgs from './utils/normalize-icon-args.js'
 import objectWithKey from './utils/object-with-key.js'
 
+const templateEl = document.createElement('template')
+
 let styleEl,
   useShadowDom = true
+
 
 config.autoAddCss = false
 
@@ -35,6 +38,12 @@ export class FontAwesomeIcon extends RawElement {
       transform: {},
       mask: {},
     }
+  }
+
+  constructor() {
+    super()
+    this._iconCount = 0
+    this._hasStyleEl = false
   }
 
   createRenderRoot() {
@@ -72,23 +81,30 @@ export class FontAwesomeIcon extends RawElement {
       symbol,
       title,
     })
-
-    if (!renderedIcon) {
-      console.warn('Could not find icon', iconLookup)
-      this.renderRoot.innerHTML = ''
-      return
-    }
-
-    this.renderRoot.innerHTML = renderedIcon.html
-
-    if (this.renderRoot !== this) {
+    
+    if (this.renderRoot !== this && !this._hasStyleEl) {
       if (!styleEl) {
         styleEl = document.createElement('style')
         styleEl.textContent = dom.css()
       }
 
       this.renderRoot.appendChild(styleEl.cloneNode(true))
+      this._hasStyleEl = true
     }
+
+    // remove old svg nodes
+    const nodeStart = this._hasStyleEl ? 1 : 0
+    for (let i = 0; i < this._iconCount; i++) {
+      this.renderRoot.childNodes[nodeStart].remove()
+    }
+
+    if (!renderedIcon) {
+      console.warn('Could not find icon', iconLookup)
+      return
+    }
+    templateEl.innerHTML = renderedIcon.html
+    this._iconCount = templateEl.content.childNodes.length
+    this.renderRoot.appendChild(templateEl.content)
   }
 }
 

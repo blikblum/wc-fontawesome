@@ -17,7 +17,8 @@ describe('fa-icon', () => {
     it('should render a known icon', async () => {
       const el = await fixture(html`<fa-icon icon="check"></fa-icon>`)
       expect(el.renderRoot.childNodes.length).to.not.be.equal(0)
-      expect(el.renderRoot.childNodes[0]).to.match('svg')
+      expect(el.renderRoot.querySelectorAll('style')).to.have.length(1)
+      expect(el.renderRoot.querySelectorAll('svg')).to.have.length(1)
       expect(el.renderRoot.querySelector('path')).to.have.attr(
         'd',
         faCheck.icon[4]
@@ -29,7 +30,8 @@ describe('fa-icon', () => {
       el.icon = 'baby'
       await elementUpdated(el)
       expect(el.renderRoot.childNodes.length).to.not.be.equal(0)
-      expect(el.renderRoot.childNodes[0]).to.match('svg')
+      expect(el.renderRoot.querySelectorAll('style')).to.have.length(1)
+      expect(el.renderRoot.querySelectorAll('svg')).to.have.length(1)
       expect(el.renderRoot.querySelector('path')).to.have.attr(
         'd',
         faBaby.icon[4]
@@ -50,7 +52,7 @@ describe('fa-icon', () => {
     it('should render a known icon', async () => {
       const el = await fixture(html`<fa-icon icon="check"></fa-icon>`)
       expect(el).to.not.be.empty
-      expect(el.childNodes[0]).to.match('svg')
+      expect(el.renderRoot.querySelectorAll('svg')).to.have.length(1)
       expect(el.querySelector('path')).to.have.attr('d', faCheck.icon[4])
     })
 
@@ -58,8 +60,7 @@ describe('fa-icon', () => {
       const el = await fixture(html`<fa-icon icon="check"></fa-icon>`)
       el.icon = 'baby'
       await elementUpdated(el)
-      expect(el).to.not.be.empty
-      expect(el.childNodes[0]).to.match('svg')
+      expect(el.renderRoot.querySelectorAll('svg')).to.have.length(1)
       expect(el.querySelector('path')).to.have.attr('d', faBaby.icon[4])
     })
   })
