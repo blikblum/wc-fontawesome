@@ -1,8 +1,19 @@
 import { RawElement } from 'raw-element'
-import { icon, parse } from '@fortawesome/fontawesome-svg-core'
+import { dom, icon, parse, config } from '@fortawesome/fontawesome-svg-core'
 import classList from './utils/get-class-list-from-props.js'
 import normalizeIconArgs from './utils/normalize-icon-args.js'
 import objectWithKey from './utils/object-with-key.js'
+
+let styleEl,
+  useShadowDom = true
+
+config.autoAddCss = false
+
+export const configure = (options = {}) => {
+  const { shadowDom = true } = options
+  useShadowDom = shadowDom
+  config.autoAddCss = !shadowDom
+}
 
 export class FontAwesomeIcon extends RawElement {
   static get properties() {
@@ -22,12 +33,12 @@ export class FontAwesomeIcon extends RawElement {
       pulse: { type: Boolean },
       rotation: { type: Number },
       transform: {},
-      mask: {}
+      mask: {},
     }
   }
 
   createRenderRoot() {
-    return this
+    return useShadowDom ? super.createRenderRoot() : this
   }
 
   render() {
@@ -36,13 +47,13 @@ export class FontAwesomeIcon extends RawElement {
       mask: maskArgs,
       symbol: symbolArgs,
       className,
-      title
+      title,
     } = this
 
     const iconLookup = normalizeIconArgs(iconArgs)
     const classes = objectWithKey('classes', [
       ...classList(this),
-      ...className.split(' ')
+      ...className.split(' '),
     ])
     const transform = objectWithKey(
       'transform',
@@ -59,16 +70,25 @@ export class FontAwesomeIcon extends RawElement {
       ...transform,
       ...mask,
       symbol,
-      title
+      title,
     })
 
     if (!renderedIcon) {
       console.warn('Could not find icon', iconLookup)
-      this.innerHTML = ''
+      this.renderRoot.innerHTML = ''
       return
     }
 
-    this.innerHTML = renderedIcon.html
+    this.renderRoot.innerHTML = renderedIcon.html
+
+    if (this.renderRoot !== this) {
+      if (!styleEl) {
+        styleEl = document.createElement('style')
+        styleEl.textContent = dom.css()
+      }
+
+      this.renderRoot.appendChild(styleEl.cloneNode(true))
+    }
   }
 }
 
