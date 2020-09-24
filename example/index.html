@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>wc-fontawesome demo</title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>wc-fontawesome demo</title>
-  <script type="importmap">
-    {
-      "imports": {
-        "lit-html": "../node_modules/lit-html/lit-html.js",
-        "lit-html/": "../node_modules/lit-html/",
-        "lit-element": "../node_modules/lit-element/lit-element.js",
-        "lit-element/": "../node_modules/lit-element/",        
-        "raw-element": "../node_modules/raw-element/dist/raw-element.js",
-        "@fortawesome/fontawesome-svg-core": "../node_modules/@fortawesome/fontawesome-svg-core/index.es.js"
+  <body>
+    <select id="select-icon">
+      <option value="spinner" selected>Spinner</option>
+      <option value="check">Check</option>
+      <option value="baby">Baby</option>
+      <option value="align-center">Align Center</option>
+      <option value="ambulance">Ambulance</option>
+      <option value="bars">Bars</option>
+    </select>
+    <input type="checkbox" name="shadow" id="use-shadow" /> Use shadow DOM
+    <div id="container"></div>
+    <script type="module">
+      import './fa-icon-examples.js'
+      import { library } from '@fortawesome/fontawesome-svg-core'
+      import { fas } from '@fortawesome/free-solid-svg-icons/index.es.js'
+      import { configure } from '../src/wc-fontawesome.js'
+
+      library.add(fas)
+      configure({ shadowDom: false })
+
+      const select = document.querySelector('#select-icon')
+      const checkbox = document.querySelector('#use-shadow')
+      const container = document.querySelector('#container')
+
+      container.innerHTML =
+        '<fa-icon-examples icon="spinner"></fa-icon-examples icon="spinner">'
+
+      let examples = container.children[0]
+
+      select.onchange = (e) => {
+        examples.icon = e.target.value
       }
-    }
-  </script>
-  <script type="module">
-    import '../src/wc-fontawesome.js'
-    import './fa-icon-examples.js'
-    import { library } from '@fortawesome/fontawesome-svg-core';
-    import { fas } from '../node_modules/@fortawesome/free-solid-svg-icons/index.es.js';
-    library.add(fas)
-  </script>
-</head>
-
-<body>
-  <select id="select-icon">
-    <option value="spinner" selected>Spinner</option>
-    <option value="check">Check</option>
-    <option value="baby">Baby</option>
-    <option value="align-center">Align Center</option>
-    <option value="ambulance">Ambulance</option>
-    <option value="bars">Bars</option>
-  </select>
-  <fa-icon-examples icon="spinner"></fa-icon-examples>
-  <script>
-    const select = document.querySelector('#select-icon')
-    const examples = document.querySelector('fa-icon-examples')
-    select.onchange = (e) => {
-      examples.icon = e.target.value
-    }
-  </script>
-</body>
-
+      checkbox.onchange = (e) => {
+        const shadowDom = e.target.checked
+        configure({ shadowDom })
+        const tagName = shadowDom
+          ? 'fa-icon-shadow-examples'
+          : 'fa-icon-examples'
+        container.innerHTML = `<${tagName} icon="${select.value}"></${tagName}>`
+        examples = container.children[0]
+      }
+    </script>
+  </body>
 </html>

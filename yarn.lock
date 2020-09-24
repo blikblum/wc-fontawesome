@@ -123,7 +123,7 @@
     mocha "^6.2.2"
     sinon-chai "^3.3.0"
 
-"@rollup/plugin-node-resolve@^8.1.0":
+"@rollup/plugin-node-resolve@^8.1.0", "@rollup/plugin-node-resolve@^8.4.0":
   version "8.4.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-8.4.0.tgz#261d79a680e9dc3d86761c14462f24126ba83575"
   integrity sha512-LFqKdRLn0ShtQyf6SBYO69bGE1upV6wUhBX0vFOUnLAyzx5cwp8svA0eHUnu8+YU57XOkrMtfG63QOpQx25pHQ==
@@ -166,6 +166,11 @@
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
+
+"@types/command-line-args@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/command-line-args/-/command-line-args-5.0.0.tgz#484e704d20dbb8754a8f091eee45cdd22bcff28c"
+  integrity sha512-4eOPXyn5DmP64MCMF8ePDvdlvlzt2a+F8ZaVjqmh2yFCpGjc1kI3kGnCFYX9SCsGTjQcWIyVZ86IHCEyjy/MNg==
 
 "@types/estree@0.0.39":
   version "0.0.39"
@@ -259,7 +264,24 @@
   dependencies:
     semver "^7.3.2"
 
-"@web/dev-server-core@^0.2.6", "@web/dev-server-core@^0.2.9":
+"@web/dev-server-cli@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@web/dev-server-cli/-/dev-server-cli-0.0.3.tgz#65d36b92e1cf0be71098756b17957741691afab3"
+  integrity sha512-mcyWkU1R7eb6kswRQOIGNfvEH8mnkORQDGYAIR290A7FagRrto8ibZVFUe+leG4d7OIw0FGCbU4IlRrGKJgSxw==
+  dependencies:
+    "@babel/code-frame" "^7.10.4"
+    "@types/command-line-args" "^5.0.0"
+    "@web/config-loader" "^0.1.1"
+    "@web/dev-server-core" "^0.2.5"
+    camelcase "^6.0.0"
+    chalk "^4.1.0"
+    command-line-args "^5.1.1"
+    command-line-usage "^6.1.0"
+    ip "^1.1.5"
+    open "^7.1.0"
+    portfinder "^1.0.27"
+
+"@web/dev-server-core@^0.2.5", "@web/dev-server-core@^0.2.6", "@web/dev-server-core@^0.2.9":
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/@web/dev-server-core/-/dev-server-core-0.2.9.tgz#bf142fa3c09c52a31a9d9e5991128724887de3c2"
   integrity sha512-adTAOZ/yQQpOX42sKfj52SQl4lQDdvQSc9Wk3FkL26dMboX4bof/J0DKbpUT3jXrpu6BnogpQosgLUAvDSXcwg==
@@ -280,7 +302,7 @@
     picomatch "^2.2.2"
     ws "^7.3.1"
 
-"@web/dev-server-rollup@^0.2.9":
+"@web/dev-server-rollup@^0.2.5", "@web/dev-server-rollup@^0.2.9":
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/@web/dev-server-rollup/-/dev-server-rollup-0.2.9.tgz#e76925846d966053a80ec6d726c189d2c2b7cd2d"
   integrity sha512-YSlXV0igmhgXEy0tCdF0QzKKyDN6Bp5bj4TYmJpXLGWkUHyKwcohHNq/kAG1mxaxdkEX5cO9FUg/MfGZqeOA0w==
@@ -290,6 +312,28 @@
     parse5 "^6.0.1"
     rollup "^2.20.0"
     whatwg-url "^8.1.0"
+
+"@web/dev-server@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@web/dev-server/-/dev-server-0.0.10.tgz#06bfc313293c97dde8fd0bb4610e27fdadf97374"
+  integrity sha512-wCEGbGv7gCjsgamemRXaS/ba8+fj0XlqKjXs8Cbm2He2j/uMTyNEEYEg9TmGah87cEJZqvpcvsqB7CAItBwqww==
+  dependencies:
+    "@babel/code-frame" "^7.10.4"
+    "@rollup/plugin-node-resolve" "^8.4.0"
+    "@types/command-line-args" "^5.0.0"
+    "@web/config-loader" "^0.1.1"
+    "@web/dev-server-cli" "^0.0.3"
+    "@web/dev-server-core" "^0.2.9"
+    "@web/dev-server-rollup" "^0.2.5"
+    camelcase "^6.0.0"
+    chalk "^4.1.0"
+    command-line-args "^5.1.1"
+    command-line-usage "^6.1.0"
+    debounce "^1.2.0"
+    deepmerge "^4.2.2"
+    ip "^1.1.5"
+    open "^7.1.0"
+    portfinder "^1.0.27"
 
 "@web/test-runner-chrome@^0.6.4", "@web/test-runner-chrome@^0.6.6":
   version "0.6.6"
@@ -1813,7 +1857,7 @@ only@~0.0.2:
   resolved "https://registry.yarnpkg.com/only/-/only-0.0.2.tgz#2afde84d03e50b9a8edc444e30610a70295edfb4"
   integrity sha1-Kv3oTQPlC5qO3EROMGEKcCle37Q=
 
-open@^7.0.4:
+open@^7.0.4, open@^7.1.0:
   version "7.2.1"
   resolved "https://registry.yarnpkg.com/open/-/open-7.2.1.tgz#07b0ade11a43f2a8ce718480bdf3d7563a095195"
   integrity sha512-xbYCJib4spUdmcs0g/2mK1nKo/jO2T7INClWd/beL7PFkXRWgr8B23ssDHX/USPn2M2IjDR5UdpYs6I67SnTSA==
@@ -1904,7 +1948,7 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
-portfinder@^1.0.26:
+portfinder@^1.0.26, portfinder@^1.0.27:
   version "1.0.28"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.28.tgz#67c4622852bd5374dd1dd900f779f53462fac778"
   integrity sha512-Se+2isanIcEqf2XMHjyUKskczxbPH7dQnlMjXX6+dybayyHvAf/TCgyMRlzf/B6QDhAEFOGes0pzRo3by4AbMA==
