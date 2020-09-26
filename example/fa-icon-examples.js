@@ -79,9 +79,128 @@ const renderIcon = (icon) => {
     </svg>
 
     <h3>Layers:</h3>
-    <div class="fa-layers fa-fw">
-      <fa-icon icon="square" color="green"></fa-icon>
-      <fa-icon icon="check" inverse transform="shrink-6"></fa-icon>
+    <h5>With <code>fa-layers</code> component</h5>
+    <div style="font-size:4em">
+      <fa-layers class="fa-fw">
+        <fa-icon icon="square"></fa-icon>
+        <fa-icon icon="check" inverse transform="shrink-6"></fa-icon>
+      </fa-layers>
+
+      <fa-layers class="fa-fw" style="background:MistyRose">
+        <fa-icon icon="circle" style="color:Tomato"></fa-icon>
+        <fa-icon icon="times" inverse transform="shrink-6"></fa-icon>
+      </fa-layers>
+
+      <fa-layers class="fa-fw" style="background:MistyRose">
+        <fa-icon icon="bookmark"></fa-icon>
+        <fa-icon
+          icon="heart"
+          transform="shrink-10 up-2"
+          style="color:Tomato"
+        ></fa-icon>
+      </fa-layers>
+
+      <fa-layers class="fa-fw" style="background:MistyRose">
+        <fa-icon icon="play" transform="rotate--90 grow-2"></fa-icon>
+        <fa-icon icon="sun" inverse transform="shrink-10 up-2"></fa-icon>
+        <fa-icon
+          icon="moon"
+          inverse
+          transform="shrink-11 down-4.2 left-4"
+        ></fa-icon>
+        <fa-icon
+          icon="star"
+          inverse
+          transform="shrink-11 down-4.2 right-4"
+        ></fa-icon>
+      </fa-layers>
+
+      <fa-layers class="fa-fw" style="background:MistyRose">
+        <fa-icon icon="calendar"></fa-icon>
+        <span
+          class="fa-layers-text fa-inverse"
+          data-fa-transform="shrink-8 down-3"
+          style="font-weight:900"
+          >27</span
+        >
+      </fa-layers>
+
+      <fa-layers class="fa-layers fa-fw" style="background:MistyRose">
+        <fa-icon icon="certificate"></fa-icon>
+        <span
+          class="fa-layers-text fa-inverse"
+          data-fa-transform="shrink-11.5 rotate--30"
+          style="font-weight:900"
+          >NEW</span
+        >
+      </fa-layers>
+
+      <fa-layers class="fa-layers fa-fw" style="background:MistyRose">
+        <fa-icon icon="envelope"></fa-icon>
+        <span class="fa-layers-counter" style="background:Tomato">1,419</span>
+      </fa-layers>
+    </div>
+
+    <h5>With plain markup</h5>
+    <div style="font-size:4em">
+      <span class="fa-layers fa-fw">
+        <fa-icon icon="square"></fa-icon>
+        <fa-icon icon="check" inverse transform="shrink-6"></fa-icon>
+      </span>
+
+      <span class="fa-layers fa-fw" style="background:MistyRose">
+        <fa-icon icon="circle" style="color:Tomato"></fa-icon>
+        <fa-icon icon="times" inverse transform="shrink-6"></fa-icon>
+      </span>
+
+      <span class="fa-layers fa-fw" style="background:MistyRose">
+        <fa-icon icon="bookmark"></fa-icon>
+        <fa-icon
+          icon="heart"
+          transform="shrink-10 up-2"
+          style="color:Tomato"
+        ></fa-icon>
+      </span>
+
+      <span class="fa-layers fa-fw" style="background:MistyRose">
+        <fa-icon icon="play" transform="rotate--90 grow-2"></fa-icon>
+        <fa-icon icon="sun" inverse transform="shrink-10 up-2"></fa-icon>
+        <fa-icon
+          icon="moon"
+          inverse
+          transform="shrink-11 down-4.2 left-4"
+        ></fa-icon>
+        <fa-icon
+          icon="star"
+          inverse
+          transform="shrink-11 down-4.2 right-4"
+        ></fa-icon>
+      </span>
+
+      <span class="fa-layers fa-fw" style="background:MistyRose">
+        <fa-icon icon="calendar"></fa-icon>
+        <span
+          class="fa-layers-text fa-inverse"
+          data-fa-transform="shrink-8 down-3"
+          style="font-weight:900"
+          >27</span
+        >
+      </span>
+
+      <span class="fa-layers fa-fw" style="background:MistyRose">
+        <fa-icon icon="certificate"></fa-icon>
+        <span
+          class="fa-layers-text fa-inverse"
+          data-fa-transform="shrink-11.5 rotate--30"
+          style="font-weight:900"
+          >NEW</span
+        >
+      </span>
+
+      <span class="fa-layers fa-fw" style="background:MistyRose">
+        <fa-icon icon="envelope"></fa-icon>
+        <span class="fa-layers-counter" style="background:Tomato">1,419</span>
+      </span>
     </div>
   `
 }
