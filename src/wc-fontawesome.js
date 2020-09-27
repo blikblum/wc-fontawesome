@@ -1,5 +1,11 @@
 import { RawElement } from 'raw-element'
-import { dom, icon, parse, config } from '@fortawesome/fontawesome-svg-core'
+import {
+  dom,
+  icon,
+  parse,
+  config,
+  text,
+} from '@fortawesome/fontawesome-svg-core'
 import classList from './utils/get-class-list-from-props.js'
 import normalizeIconArgs from './utils/normalize-icon-args.js'
 import objectWithKey from './utils/object-with-key.js'
@@ -9,14 +15,24 @@ const templateEl = document.createElement('template')
 let styleEl,
   useShadowDom = true
 
-
 config.autoAddCss = false
 
-export const styleElNeeded = () => {
+const transformRegex = /transform:(.*?);/
+const extractTransformStyle = (abstract) => {
+  let result
+  const style = abstract[0].attributes.style
+  if (style) {
+    const match = transformRegex.exec(style)
+    result = match && match[1]
+  }
+  return result || ''
+}
+
+const styleElNeeded = () => {
   if (!styleEl) {
     styleEl = document.createElement('style')
     styleEl.textContent = dom.css()
-  }  
+  }
 }
 
 export const configure = (options = {}) => {
@@ -88,7 +104,7 @@ export class FontAwesomeIcon extends RawElement {
       symbol,
       title,
     })
-    
+
     if (this.renderRoot !== this && !this._hasStyleEl) {
       styleElNeeded()
 
@@ -115,7 +131,7 @@ export class FontAwesomeIcon extends RawElement {
 class FontAwesomeLayers extends HTMLElement {
   constructor() {
     super()
-    const shadow = this.attachShadow({ mode: 'open' });
+    const shadow = this.attachShadow({ mode: 'open' })
     shadow.innerHTML = `
       <style>
         :host {
@@ -144,5 +160,50 @@ class FontAwesomeLayers extends HTMLElement {
   }
 }
 
+class FontAwesomeText extends RawElement {
+  static get properties() {
+    return {
+      transform: {},
+    }
+  }
+
+  render() {
+    if (!this.renderRoot.childNodes.length) {
+      this.renderRoot.innerHTML = `
+      <style>
+        :host {          
+          display: inline-block;
+          position: absolute;
+          text-align: center;          
+          left: 50%;
+          top: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          -webkit-transform-origin: center center;
+          transform-origin: center center;
+        }
+
+        :host([inverse]) {
+          color: #fff;
+        }
+      </style>
+      <slot></slot>
+      `
+    }
+
+    const transform = objectWithKey(
+      'transform',
+      typeof this.transform === 'string'
+        ? parse.transform(this.transform)
+        : this.transform
+    )
+    // by copying transformForCss could make more efficient. Use public API for now
+    const renderedText = text('', transform)
+    const transformStyle = extractTransformStyle(renderedText.abstract)
+    this.style.transform = transformStyle
+  }
+}
+
 customElements.define('fa-icon', FontAwesomeIcon)
 customElements.define('fa-layers', FontAwesomeLayers)
+customElements.define('fa-text', FontAwesomeText)
