@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit-element'
+import { faStyles } from './faStyles.js'
 
 const renderIcon = (icon) => {
   return html`
@@ -117,21 +118,18 @@ const renderIcon = (icon) => {
 
       <fa-layers class="fa-fw" style="background:MistyRose">
         <fa-icon icon="calendar"></fa-icon>
-        <span
-          class="fa-layers-text fa-inverse"
-          data-fa-transform="shrink-8 down-3"
-          style="font-weight:900"
-          >27</span
+        <fa-text inverse transform="shrink-8 down-3" style="font-weight:900"
+          >27</fa-text
         >
       </fa-layers>
 
       <fa-layers class="fa-layers fa-fw" style="background:MistyRose">
         <fa-icon icon="certificate"></fa-icon>
-        <span
-          class="fa-layers-text fa-inverse"
-          data-fa-transform="shrink-11.5 rotate--30"
+        <fa-text
+          inverse
+          transform="shrink-11.5 rotate--30"
           style="font-weight:900"
-          >NEW</span
+          >NEW</fa-text
         >
       </fa-layers>
 
@@ -179,21 +177,18 @@ const renderIcon = (icon) => {
 
       <span class="fa-layers fa-fw" style="background:MistyRose">
         <fa-icon icon="calendar"></fa-icon>
-        <span
-          class="fa-layers-text fa-inverse"
-          data-fa-transform="shrink-8 down-3"
-          style="font-weight:900"
-          >27</span
+        <fa-text inverse transform="shrink-8 down-3" style="font-weight:900"
+          >27</fa-text
         >
       </span>
 
       <span class="fa-layers fa-fw" style="background:MistyRose">
         <fa-icon icon="certificate"></fa-icon>
-        <span
-          class="fa-layers-text fa-inverse"
-          data-fa-transform="shrink-11.5 rotate--30"
+        <fa-text
+          inverse
+          transform="shrink-11.5 rotate--30"
           style="font-weight:900"
-          >NEW</span
+          >NEW</fa-text
         >
       </span>
 
@@ -206,14 +201,14 @@ const renderIcon = (icon) => {
 }
 
 class FAIconExamples extends LitElement {
+  static get styles() {
+    return [faStyles]
+  }
+
   static get properties() {
     return {
       icon: { type: String },
     }
-  }
-
-  createRenderRoot() {
-    return this
   }
 
   render() {
