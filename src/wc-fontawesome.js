@@ -45,6 +45,7 @@ export class FontAwesomeIcon extends RawElement {
   static get properties() {
     return {
       icon: { type: String },
+      name: { type: String },
       symbol: { type: String },
       title: { type: String },
       size: { type: String },
@@ -76,13 +77,14 @@ export class FontAwesomeIcon extends RawElement {
   render() {
     const {
       icon: iconArgs,
+      name,
       mask: maskArgs,
       symbol: symbolArgs,
       className,
       title,
     } = this
 
-    const iconLookup = normalizeIconArgs(iconArgs)
+    const iconLookup = normalizeIconArgs(name || iconArgs)
     const classes = objectWithKey('classes', [
       ...classList(this),
       ...className.split(' '),

@@ -25,6 +25,17 @@ describe('fa-icon', () => {
       )
     })
 
+    it('should accept a name attribute', async () => {
+      const el = await fixture(html`<fa-icon name="check"></fa-icon>`)
+      expect(el.renderRoot.childNodes.length).to.not.be.equal(0)
+      expect(el.renderRoot.querySelectorAll('style')).to.have.length(1)
+      expect(el.renderRoot.querySelectorAll('svg')).to.have.length(1)
+      expect(el.renderRoot.querySelector('path')).to.have.attr(
+        'd',
+        faCheck.icon[4]
+      )
+    })
+
     it('should change content when icon property changes', async () => {
       const el = await fixture(html`<fa-icon icon="check"></fa-icon>`)
       el.icon = 'baby'
