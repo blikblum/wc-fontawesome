@@ -24,10 +24,10 @@
     "raw-element": "^0.3.0"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@open-wc/testing": "^2.5.26",
-    "@web/dev-server": "^0.0.10",
-    "@web/test-runner": "^0.7.27"
+    "@fortawesome/fontawesome-svg-core": "^1.2.31",
+    "@fortawesome/free-solid-svg-icons": "^5.15.0",
+    "@open-wc/testing": "^2.5.27",
+    "@web/dev-server": "^0.0.12",
+    "@web/test-runner": "^0.7.38"
   }
 }
