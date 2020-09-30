@@ -2,8 +2,6 @@
 
 Web component integration with Font Awesome (v5)
 
-> Ported from [react-fontawesome](https://github.com/FortAwesome/react-fontawesome)
-
 ### Installation
 
 Libraries
@@ -23,26 +21,64 @@ yarn add @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
 ```js
 import 'wc-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { fas, faSpinner } from '@fortawesome/free-solid-svg-icons'
+
+// add all solid icons...
 library.add(fas)
+// ... or individually
+library.add(faSpinner)
 ```
 
 ```html
-<link
-  rel="stylesheet"
-  href="../node_modules/@fortawesome/fontawesome-svg-core/styles.css"
-/>
-
 <fa-icon icon="spinner"></fa-icon>
 ```
 
-Look at the [example](example/index.html) that shows FontAwesome features. 
+#### Examples
 
-> Needs to run on a local server with Chrome (due to importmap support)
+Look at the provided [example](example/index.html): clone repository, install dependencies and run npm `start` script or check the [live example](https://codesandbox.io/s/wc-fontawesome-example-s4lqs?file=/src/index.js).
+
+#### With shadow Dom
+
+Font Awesome is implemented using global styles which do not work in web components that renders in shadow Dom.
+
+To use `wc-fontawesome` along side shadow Dom is necessary to add the Font Awesome css in the component. See example below or check
+how can be done using LitElement [styling system](example/fa-icon-examples.js#L205).
+
+```js
+import { dom } from '@fortawesome/fontawesome-svg-core'
+
+class ElementWithIcons extends HTMLElement {
+  constructor() {
+    super()
+    const shadow = this.attachShadow({ mode: 'open' })
+    shadow.innerHTML = `
+      <style>
+        ${dom.css()}
+      </style>
+      <fa-icon name="spinner"></fa-icon>
+    `
+  }
+}
+```
+
+Alternatively, enable the usage of shadow Dom in `fa-icon` component. This will allow to use it in any web component with the drawback of breaking layers functionality:
+
+```js
+import { configure } from 'wc-fontawesome'
+
+configure({ shadowDom: true })
+```
+
+### Components
+
+- `fa-icon`: show icon defined by `icon` or `name` property
+- `fa-text`: show text in layers
+- `fa-counter`: show counter in layers
+- `fa-layers`: container for layers (experimental - use `div` with `fa-layers` class instead)
 
 ### Features
 
-The following features are available as part of Font Awesome
+The following features are implemented
 
 #### Basic
 
@@ -113,13 +149,7 @@ Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling
 
 ```html
 <fa-icon icon="stroopwafel"></fa-icon>
-<fa-icon icon="stroopwafel" swap-ppacity></fa-icon>
-```
-
-Your own class names:
-
-```html
-<fa-icon icon="spinner" className="highlight"></fa-icon>
+<fa-icon icon="stroopwafel" swap-opacity></fa-icon>
 ```
 
 #### Advanced
@@ -145,10 +175,32 @@ Your own class names:
 
 [Layers](https://fontawesome.com/how-to-use/on-the-web/styling/layering):
 
+Simple
+
 ```html
-<span className="fa-layers fa-fw">
-  <fa-icon icon="square" color="green"></fa-icon>
+<span class="fa-layers fa-fw">
+  <fa-icon icon="square"></fa-icon>
   <fa-icon icon="check" inverse transform="shrink-6"></fa-icon>
+</span>
+```
+
+With text
+
+```html
+<span class="fa-layers fa-fw" style="background:MistyRose">
+  <fa-icon icon="certificate"></fa-icon>
+  <fa-text inverse transform="shrink-11.5 rotate--30" style="font-weight:900"
+    >NEW</fa-text
+  >
+</span>
+```
+
+With counter
+
+```html
+<span class="fa-layers fa-fw" style="background:MistyRose">
+  <fa-icon icon="envelope"></fa-icon>
+  <fa-counter style="background:Tomato">1,419</fa-counter>
 </span>
 ```
 
@@ -156,4 +208,4 @@ Your own class names:
 
 2019 - Luiz Américo Pereira Câmara
 
-Proted from [react-fontawesome](https://github.com/FortAwesome/react-fontawesome)
+Ported from [react-fontawesome](https://github.com/FortAwesome/react-fontawesome)
