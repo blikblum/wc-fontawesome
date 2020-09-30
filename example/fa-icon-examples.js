@@ -135,7 +135,7 @@ const renderIcon = (icon) => {
 
       <fa-layers class="fa-layers fa-fw" style="background:MistyRose">
         <fa-icon icon="envelope"></fa-icon>
-        <span class="fa-layers-counter" style="background:Tomato">1,419</span>
+        <fa-counter style="background:Tomato">1,419</fa-counter>
       </fa-layers>
     </div>
 
@@ -194,7 +194,7 @@ const renderIcon = (icon) => {
 
       <span class="fa-layers fa-fw" style="background:MistyRose">
         <fa-icon icon="envelope"></fa-icon>
-        <span class="fa-layers-counter" style="background:Tomato">1,419</span>
+        <fa-counter style="background:Tomato">1,419</fa-counter>
       </span>
     </div>
   `
