@@ -13,9 +13,7 @@ import objectWithKey from './utils/object-with-key.js'
 const templateEl = document.createElement('template')
 
 let styleEl,
-  useShadowDom = true
-
-config.autoAddCss = false
+  useShadowDom = false
 
 const transformRegex = /transform:(.*?);/
 const extractTransformStyle = (abstract) => {
