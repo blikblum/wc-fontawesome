@@ -68,6 +68,9 @@ const renderIcon = (icon) => {
     <h3>Mask:</h3>
     <fa-icon icon=${icon} mask="circle"></fa-icon>
 
+    <h3>Custom class (color):</h3>
+    <fa-icon icon=${icon} class="color-red"></fa-icon>
+
     <h3>Symbols:</h3>
     <fa-icon icon="spinner" symbol></fa-icon>
     <fa-icon icon=${icon} symbol="symbol-icon"></fa-icon>
@@ -209,6 +212,10 @@ class FAIconExamples extends LitElement {
     return {
       icon: { type: String },
     }
+  }
+
+  createRenderRoot() {
+    return this
   }
 
   render() {
