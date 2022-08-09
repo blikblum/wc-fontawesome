@@ -21,13 +21,13 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.25"
   },
   "dependencies": {
-    "raw-element": "^0.3.0"
+    "raw-element": "^0.4.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.31",
     "@fortawesome/free-solid-svg-icons": "^5.15.0",
-    "@open-wc/testing": "^2.5.27",
-    "@web/dev-server": "^0.0.12",
-    "@web/test-runner": "^0.7.38"
+    "@open-wc/testing": "^3.1.6",
+    "@web/dev-server": "^0.1.33",
+    "@web/test-runner": "^0.14.0"
   }
 }
